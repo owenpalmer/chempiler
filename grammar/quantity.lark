@@ -1,0 +1,22 @@
+// Units and measurements
+start: quantity+
+quantity: exact | inexact
+exact: INTEGER COUNTING_UNIT* OBJECT
+inexact: (NUMBER UNIT)+ OBJECT
+
+COUNTING_UNIT: "dozen" | /mol(es|e|s)?/
+UNIT: "mL" | "g" | /mol(es|e|s)?/ | "g/mol" | "M" | "m" | "s" | "m/s" | "degC" | "degF" | "K"
+
+SCINOT: /\s*[xX*]\s*10\s*\^\s*-?\d+/
+SCINOT_POS: /\s*[xX*]\s*10\s*\^\s*\d+/
+SCINOT_NEG: /\s*[xX*]\s*10\s*\^\s*-\d+/
+
+FLOAT: /-?\d+\.\d+/ SCINOT? | /-?\d+/ SCINOT_NEG
+INTEGER: /-?\d+/ SCINOT_POS?
+NUMBER: FLOAT | INTEGER
+
+OBJECT: "\"" /[a-zA-Z0-9]+/ "\"" | PARTICLE
+PARTICLE: "H" | "NaCl"
+
+%import common.WS
+%ignore WS
