@@ -1,0 +1,36 @@
+start: gf+
+gf: given find+
+given: "given:" statement+
+find: "find:" query+
+
+statement: quantity | dilution | ratio | reaction | "endpoint"
+
+ratio: quantity "/" quantity
+dilution: (inexact "+")+ particle "->" NUMBER UNIT "solution"
+reaction: (INTEGER? particle "+"?)+ "->" (INTEGER? particle"+"?)+
+
+query: ((COUNTING_UNIT* object) | (UNIT+ object)) intermediate? | "polarity"
+intermediate: ("as" WORD)?
+
+quantity: exact | inexact
+exact: INTEGER COUNTING_UNIT* object 
+inexact: (NUMBER UNIT)+ object?
+
+COUNTING_UNIT: "dozen" | /mol(es|e|s)?/
+UNIT: "mL" | "g" | /mol(es|e|s)?/ | "g/mol" | "M" | "m" | "s" | "m/s" | "degC" | "degF" | "K" | "kg" | "L" | "atm"
+
+SCINOT: /\s*[xX*]\s*10\s*\^\s*-?\d+/
+SCINOT_POS: /\s*[xX*]\s*10\s*\^\s*\d+/
+SCINOT_NEG: /\s*[xX*]\s*10\s*\^\s*-\d+/
+
+FLOAT: /-?\d+\.\d+/ SCINOT? | /-?\d+/ SCINOT_NEG
+INTEGER: /-?\d+/ SCINOT_POS?
+NUMBER: FLOAT | INTEGER
+
+object: "\"" /[a-zA-Z0-9]+/ "\"" | particle
+particle: ("H" | "O2" | "NaCl" | "HCl" | "H2O" | "H2" | "ethanol" | "water" | "NaOH") phase? ("in" particle)?
+phase: "gas" | "liquid" | "solid"
+
+%import common.WS
+%import common.WORD
+%ignore WS
