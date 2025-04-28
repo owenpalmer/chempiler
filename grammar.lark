@@ -17,7 +17,7 @@ exact: INTEGER COUNTING_UNIT* object
 inexact: (NUMBER UNIT)+ object?
 
 COUNTING_UNIT: "dozen" | /mol(es|e|s)?/
-UNIT: "mL" | "g" | /mol(es|e|s)?/ | "g/mol" | "M" | "m" | "s" | "m/s" | "degC" | "degF" | "K" | "kg" | "L" | "atm"
+UNIT: "mL" | "g" | /mol(es|e|s)?/ | "g/mol" | "M" | "m" | "s" | "m/s" | "degC" | "degF" | "K" | "kg" | "L" | "atm" | "lb"
 
 SCINOT: /\s*[xX*]\s*10\s*\^\s*-?\d+/
 SCINOT_POS: /\s*[xX*]\s*10\s*\^\s*\d+/
