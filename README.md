@@ -1,7 +1,7 @@
 # Chempiler: A notation for chemistry calculations
 Note: The repo is in very early stages. Progress has been made on the notation spec and the parser, but the backend is not implemented yet. Check out the roadmap for more info.
 
-The notation system's foundation is the disctintion between input (`given:`) and output (`find:`) information. This separation mirrors how chemists approach problems and how calculations naturally flow.
+The notation system's foundation is the disctintion between input (`given:`) and output (`find:`) information.
 
 You can specify your knowns as a list of givens, followed by the information you're looking for in a `find:` statement.
 ```
